@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- ECS Encoder for logging in ECS format -->
+    <encoder class="co.elastic.logging.logback.EcsEncoder"/>
+    <springProperty scope="context" name="filePath" source="logging.file.path"/>
+
+    <!-- Console appender for normal logging -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="CONSOLE_ECS" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="co.elastic.logging.logback.EcsEncoder"/>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <!--        <appender-ref ref="CONSOLE_ECS"/>-->
+    </root>
+
+    <springProfile name="elastic">
+        <!-- File appender for ECS formatted logs -->
+        <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+        <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+        <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
+        <include resource="co/elastic/logging/logback/boot/ecs-console-appender.xml" />
+        <include resource="co/elastic/logging/logback/boot/ecs-file-appender.xml" />
+        <property name="LOG_FILE" value="${filePath}/spring.log"/>
+        <!-- Root logger -->
+        <root level="info">
+            <appender-ref ref="ECS_JSON_FILE"/>
+        </root>
+    </springProfile>
+
+</configuration>

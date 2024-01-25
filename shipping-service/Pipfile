@@ -1,0 +1,11 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "3.0.1"
+ecs-logging = "2.1.0"
+elastic-apm = {extras = ["flask"], version = "6.20.0"}
+
+[dev-packages]
