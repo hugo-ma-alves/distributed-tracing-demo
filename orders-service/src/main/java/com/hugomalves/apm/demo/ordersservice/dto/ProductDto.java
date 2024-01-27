@@ -2,20 +2,20 @@ package com.hugomalves.apm.demo.ordersservice.dto;
 
 import java.math.BigDecimal;
 
-public class ProductDTO {
+public class ProductDto {
     private Long id;
     private String barcode;
     private String description;
     private BigDecimal price;
 
-    public ProductDTO(Long id, String barcode, String description, BigDecimal price) {
+    public ProductDto(Long id, String barcode, String description, BigDecimal price) {
         this.id = id;
         this.barcode = barcode;
         this.description = description;
         this.price = price;
     }
 
-    public ProductDTO() {
+    public ProductDto() {
     }
 
     public Long getId() {

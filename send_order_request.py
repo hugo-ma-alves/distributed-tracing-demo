@@ -14,8 +14,8 @@ def send_request():
         data = {
             "clientName": "John Doe",
             "products": [
-                {"productId": 1, "quantity": 2},
-                {"productId": 3, "quantity": 1}
+                {"id": 1, "quantity": 2},
+                {"id": 3, "quantity": 1}
             ]
         }
         conn.request("POST", "/orders", body=json.dumps(data), headers=headers)

@@ -15,7 +15,7 @@ def ship_the_order(order_json):
     # Simulate shipping logic
     logger.info(f"Scheduling shipping for Order ID: {order_id}")
     for product in products:
-        logger.debug(f"Product ID: {product['productId']} - Quantity: {product['quantity']}")
+        logger.debug(f"Product ID: {product['id']} - Quantity: {product['quantity']}")
     logger.info("Packing the items")
     packaging()
     logger.info("Sent")

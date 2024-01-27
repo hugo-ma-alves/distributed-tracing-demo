@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Orders List</title>
+    <!-- Add any additional CSS or Bootstrap CDN here -->
+</head>
+<body>
+<h1>Orders</h1>
+<div th:each="order : ${orderPage.content}">
+    <h3 th:text="${order.id + ' - ' + order.clientName}"></h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Barcode</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${order.products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.barcode}"></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.quantity}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <hr> <!-- Separator -->
+</div>
+
+<div>
+    <a th:if="${orderPage.hasPrevious()}" th:href="@{/orders(page=${orderPage.number - 1}, size=${orderPage.size})}">Previous</a>
+    <span th:text="${orderPage.number + 1}"></span>
+    <a th:if="${orderPage.hasNext()}"
+       th:href="@{/orders(page=${orderPage.number + 1}, size=${orderPage.size})}">Next</a>
+</div>
+</body>
+</html>

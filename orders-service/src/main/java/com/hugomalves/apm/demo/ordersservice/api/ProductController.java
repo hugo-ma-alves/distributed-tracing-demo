@@ -1,6 +1,6 @@
-package com.hugomalves.apm.demo.ordersservice;
+package com.hugomalves.apm.demo.ordersservice.api;
 
-import com.hugomalves.apm.demo.ordersservice.dto.ProductDTO;
+import com.hugomalves.apm.demo.ordersservice.dto.ProductDto;
 import com.hugomalves.apm.demo.ordersservice.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,9 +22,9 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductDTO>> getAllProducts() {
+    public ResponseEntity<List<ProductDto>> getAllProducts() {
         LOGGER.info("Requested the list of products");
-        List<ProductDTO> products = productService.getAllProducts();
+        List<ProductDto> products = productService.getAllProducts();
         LOGGER.debug("Returned {} products to the customer", products.size());
         return ResponseEntity.ok(products);
     }

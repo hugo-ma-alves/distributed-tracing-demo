@@ -1,6 +1,6 @@
 package com.hugomalves.apm.demo.ordersservice.service;
 
-import com.hugomalves.apm.demo.ordersservice.dto.ProductDTO;
+import com.hugomalves.apm.demo.ordersservice.dto.ProductDto;
 import com.hugomalves.apm.demo.ordersservice.model.Product;
 import com.hugomalves.apm.demo.ordersservice.repository.ProductRepository;
 import org.slf4j.Logger;
@@ -21,15 +21,15 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<ProductDTO> getAllProducts() {
+    public List<ProductDto> getAllProducts() {
         return productRepository.findAll().stream()
                 .map(ProductService::mapProductDto)
                 .collect(Collectors.toList());
     }
 
-    private static ProductDTO mapProductDto(Product product) {
+    private static ProductDto mapProductDto(Product product) {
         LOGGER.info("Mapping Product to ProductDto");
-        return new ProductDTO(
+        return new ProductDto(
                 product.getId(),
                 product.getBarcode(),
                 product.getDescription(),
