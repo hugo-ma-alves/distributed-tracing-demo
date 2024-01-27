@@ -1,7 +1,7 @@
 # Distributed tracing demo with ELK stack
 
 Sample application demonstrating the 3 pillars of observability using the ELK stack.
-For aall the details related with this demo check the following blog post: 
+For all the details related with this demo check the following blog post: https://www.hugomalves.com/observability-the-3-pillars-with-elk-stack
 
 # What's included
 
