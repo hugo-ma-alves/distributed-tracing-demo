@@ -35,4 +35,18 @@
         </root>
     </springProfile>
 
+    <springProfile name="ecs-console">
+        <!-- File appender for ECS formatted logs -->
+        <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+        <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+        <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
+        <include resource="co/elastic/logging/logback/boot/ecs-console-appender.xml" />
+        <include resource="co/elastic/logging/logback/boot/ecs-file-appender.xml" />
+        <property name="LOG_FILE" value="${filePath}/spring.log"/>
+        <!-- Root logger -->
+        <root level="info">
+            <appender-ref ref="CONSOLE_ECS"/>
+        </root>
+    </springProfile>
+
 </configuration>

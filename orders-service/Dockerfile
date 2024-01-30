@@ -25,5 +25,6 @@ ENTRYPOINT ["java", "-javaagent:/elastic-apm-agent.jar",\
 "-Delastic.apm.service_name=${ELASTIC_APM_SERVICE_NAME}",\
 "-Delastic.apm.application_packages=com.hugomalves",\
 "-Delastic.apm.server_urls=${ELASTIC_APM_SERVER_URL}",\
+"-Delastic.apm.disable_metrics=true",\
  "-Djava.security.egd=file:/dev/./urandom",\
  "-jar", "/app/orders-service.jar"]
