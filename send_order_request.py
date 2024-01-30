@@ -18,11 +18,11 @@ def send_request():
                 {"id": 3, "quantity": 1}
             ]
         }
-        conn.request("POST", "/orders", body=json.dumps(data), headers=headers)
+        conn.request("POST", "/api/orders", body=json.dumps(data), headers=headers)
         response = conn.getresponse()
         print(response.status)
         conn.close()
-        time.sleep(0.1)  # Optional: to prevent overwhelming the server
+        time.sleep(0.3)  # Optional: to prevent overwhelming the server
 
 # Create and start 5 threads
 threads = []
