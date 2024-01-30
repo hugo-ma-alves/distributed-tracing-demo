@@ -22,6 +22,7 @@ COPY --from=docker.elastic.co/observability/apm-agent-java:latest /usr/agent/ela
 COPY --from=build /home/app/target/*.jar /app/orders-service.jar
 
 ENTRYPOINT ["java", "-javaagent:/elastic-apm-agent.jar",\
+"-Xmx512M",\
 "-Delastic.apm.service_name=${ELASTIC_APM_SERVICE_NAME}",\
 "-Delastic.apm.application_packages=com.hugomalves",\
 "-Delastic.apm.server_urls=${ELASTIC_APM_SERVER_URL}",\
