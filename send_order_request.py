@@ -4,7 +4,8 @@ import threading
 import time
 
 def send_request():
-    while True:
+    count = 0
+    while count < 100:
         conn = http.client.HTTPConnection("localhost", 8080)
         headers = {
             "Content-Type": "application/json",
@@ -23,6 +24,7 @@ def send_request():
         print(response.status)
         conn.close()
         time.sleep(0.3)  # Optional: to prevent overwhelming the server
+        count = count + 1
 
 # Create and start 5 threads
 threads = []
